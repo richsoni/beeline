@@ -2,6 +2,12 @@
 require 'digest/md5'
 file_prefix = 'tmp/cache/routes_'
 
+unless File.respond_to?(:binread)
+  def File.binread(file)
+    File.open(file,"rb") { |f| f.read }
+  end
+end
+
 md5 = Digest::MD5::new
 unless File.exist?('config/routes.rb')
   puts "Must be used in a Rails project"
