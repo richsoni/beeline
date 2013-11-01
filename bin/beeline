@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+require 'digest/md5'
+file_prefix = 'tmp/cache/routes_'
+
+md5 = Digest::MD5::new
+unless File.exist?('Gemfile')
+  puts "Must be used in a Rails project"
+  exit 0
+end
+
+new_checksum = md5.update(File.binread('Gemfile'))
+old_file     = Dir.glob("#{file_prefix}*").first
+old_checksum = (old_file || '').sub(file_prefix, '')
+puts "Old Checksum is:#{old_checksum}"
+puts "New Checksum is:#{new_checksum}"
+unless new_checksum == old_checksum
+  File.delete(old_file) if old_file
+  puts 'bundle exec rake routes'
+  routes = `ds - bundle exec rake routes`
+  File.write("#{file_prefix}#{new_checksum}", routes)
+else
+  puts " => Routes Have Not Changed "
+end
+puts '************************'
+puts `cat #{file_prefix}#{new_checksum}`
