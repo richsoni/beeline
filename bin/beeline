@@ -16,7 +16,7 @@ puts "New Checksum is:#{new_checksum}"
 unless new_checksum == old_checksum
   File.delete(old_file) if old_file
   puts 'bundle exec rake routes'
-  routes = `ds - bundle exec rake routes`
+  routes = `bundle exec rake routes`
   File.write("#{file_prefix}#{new_checksum}", routes)
 else
   puts " => Routes Have Not Changed "
