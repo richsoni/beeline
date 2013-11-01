@@ -17,7 +17,7 @@ unless new_checksum == old_checksum
   File.delete(old_file) if old_file
   puts 'bundle exec rake routes'
   routes = `bundle exec rake routes`
-  File.write("#{file_prefix}#{new_checksum}", routes)
+  File.open("#{file_prefix}#{new_checksum}", 'w') { |file| file.write(routes) } 
 else
   puts " => Routes Have Not Changed "
 end
