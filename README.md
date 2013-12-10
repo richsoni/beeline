@@ -1,6 +1,8 @@
-# Beeline
+# Beeline because rake routes is just too slow #
 
-TODO: Write a gem description
+Beeline caches rake routes, so it will be your fastest way to get to your routes.
+
+<img class='img-responsive' src='{{site.url}}/images/project/beeline/beeline.gif' />
 
 ## Installation
 
@@ -18,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+in any rails project, just type ```beeline```
 
 ## Contributing
 
