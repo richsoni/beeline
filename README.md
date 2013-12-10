@@ -2,7 +2,7 @@
 
 Beeline caches rake routes, so it will be your fastest way to get to your routes.
 
-<img class='img-responsive' src='{{site.url}}/images/project/beeline/beeline.gif' />
+<img class='img-responsive' src='beeline.gif' />
 
 ## Installation
 
